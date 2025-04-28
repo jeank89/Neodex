@@ -25,7 +25,7 @@ export const Home = () => {
             id: res.data.id,
             name: res.data.name,
             image: res.data.sprites.front_default,
-            types: res.data.types, // <-- agora pegamos os tipos do jeito certo
+            types: res.data.types, 
           };
         })
       );
@@ -44,7 +44,7 @@ export const Home = () => {
     }
 
     const filtered = allPokemons.filter((pokemon) =>
-      pokemon.name.toLowerCase().includes(name.toLowerCase()) // <- CORRIGIDO
+      pokemon.name.toLowerCase().includes(name.toLowerCase()) 
     );
     setPokemons(filtered);
   };
@@ -68,7 +68,7 @@ export const Home = () => {
             pokemons.map((pokemon) => (
               <PokemonCard
                 key={pokemon.id}
-                pokemon={pokemon} // <-- agora enviamos o objeto inteiro
+                pokemon={pokemon} 
               />
             ))
           )}
