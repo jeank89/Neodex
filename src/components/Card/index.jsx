@@ -1,11 +1,11 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom'; 
 import Card from '@mui/material/Card';
 import CardActionArea from '@mui/material/CardActionArea';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 
-// Mapeamento dos ícones dos tipos
 const typeIcons = {
   bug: '/assets/types/bug.png',
   dark: '/assets/types/dark.png',
@@ -28,13 +28,17 @@ const typeIcons = {
 };
 
 export const PokemonCard = ({ pokemon }) => {
- 
+  const navigate = useNavigate(); 
+
   if (!pokemon) {
     return null;
   }
 
- 
   const { name, image, types } = pokemon;
+
+  const handleClick = () => {
+    navigate(`/profile/${name}`);
+  };
 
   return (
     <Card
@@ -44,10 +48,11 @@ export const PokemonCard = ({ pokemon }) => {
         height: "300px",
         backgroundColor: "#8a8888",
         borderRadius: 2,
-        margin: "0 auto"
+        margin: "0 auto",
       }}
     >
-      <CardActionArea sx={{ height: "100%" }}>
+      {/* o clique tem que ser no CardActionArea */}
+      <CardActionArea sx={{ height: "100%" }} onClick={handleClick}>
         <CardMedia
           component="img"
           height="140"
@@ -55,7 +60,7 @@ export const PokemonCard = ({ pokemon }) => {
           alt={name}
         />
         <CardContent>
-          <Typography gutterBottom variant="h6" component="div" align="center">
+          <Typography gutterBottom variant="h6" component="div" align="center" sx={{ textTransform: 'capitalize' }}>
             {name}
           </Typography>
           <Typography gutterBottom variant="h7" component="div" align="center">
